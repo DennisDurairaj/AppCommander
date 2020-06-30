@@ -30,7 +30,8 @@ namespace AppCommander
       services.AddDbContext<AppCommanderContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("AppCommanderConnection")));
       services.AddControllers();
 
-      services.AddScoped<IAppCommanderRepo, MockAppCommanderRepo>();
+      // services.AddScoped<IAppCommanderRepo, MockAppCommanderRepo>();
+      services.AddScoped<IAppCommanderRepo, SqlAppCommanderRepo>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
