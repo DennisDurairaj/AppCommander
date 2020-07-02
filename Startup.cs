@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AppCommander.Data;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +31,7 @@ namespace AppCommander
       services.AddDbContext<AppCommanderContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("AppCommanderConnection")));
       services.AddControllers();
 
-      // services.AddScoped<IAppCommanderRepo, MockAppCommanderRepo>();
+      services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
       services.AddScoped<IAppCommanderRepo, SqlAppCommanderRepo>();
     }
 
